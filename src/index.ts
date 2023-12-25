@@ -16,10 +16,10 @@ export const babylonInit = async (): Promise<void> => {
     if (engineType === "webgpu") {
         const webGPUSupported = await WebGPUEngine.IsSupportedAsync;
         if (webGPUSupported) {
-            const webgpu = engine = new WebGPUEngine(canvas, {
+            const webgpu = (engine = new WebGPUEngine(canvas, {
                 adaptToDeviceRatio: true,
                 antialias: true,
-            });
+            }));
             await webgpu.initAsync();
             engine = webgpu;
         } else {
@@ -36,7 +36,9 @@ export const babylonInit = async (): Promise<void> => {
     (window as any).scene = scene;
 
     // Register a render loop to repeatedly render the scene
+    const divFps = document.getElementById("fps");
     engine.runRenderLoop(function () {
+        divFps!.innerHTML = engine.getFps().toFixed() + " fps";
         scene.render();
     });
 

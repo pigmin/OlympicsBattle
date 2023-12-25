@@ -2,7 +2,7 @@ import type { Engine } from "@babylonjs/core/Engines/engine";
 import type { Scene } from "@babylonjs/core/scene";
 
 // Change this import to check other scenes
-import { DefaultSceneWithTexture } from "./scenes/defaultWithTexture";
+import { PhysicsSceneWithHavok } from "./scenes/physicsWithHavok";
 
 export interface CreateSceneClass {
     createScene: (engine: Engine, canvas: HTMLCanvasElement) => Promise<Scene>;
@@ -14,5 +14,5 @@ export interface CreateSceneModule {
 }
 
 export const getSceneModule = (): CreateSceneClass => {
-    return new DefaultSceneWithTexture();
+    return new PhysicsSceneWithHavok();
 }

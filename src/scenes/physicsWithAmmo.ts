@@ -14,7 +14,7 @@ import { PhysicsImpostor } from "@babylonjs/core/Physics/physicsImpostor";
 import { ammoModule, ammoReadyPromise } from "../externals/ammo";
 import { CreateSceneClass } from "../createScene";
 
-class PhysicsSceneWithAmmo implements CreateSceneClass {
+export class PhysicsSceneWithAmmo implements CreateSceneClass {
     preTasks = [ammoReadyPromise];
 
     createScene = async (engine: Engine, canvas: HTMLCanvasElement): Promise<Scene> => {
